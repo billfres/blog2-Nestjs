@@ -1,0 +1,20 @@
+
+
+configuration
+npm i --save @nestjs/config
+
+install postgres
+npm install --save @nestjs/typeorm typeorm postgres(or pg)
+
+after that, we must configure the app.module.ts
+ imports: [
+    ConfigModule.forRoot({isGlobal: true}),
+    TypeOrmModule.forRoot({
+      type: "postgres",
+      url: '',
+      autoLoadEntities: true,
+      synchronize: true
+    })
+  ],
+-->On crée le .env et on le remplit
+//npm install --save dotenv
