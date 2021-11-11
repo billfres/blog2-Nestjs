@@ -18,3 +18,14 @@ after that, we must configure the app.module.ts
   ],
 -->On crée le .env et on le remplit
 //npm install --save dotenv
+
+-->on crée:
+nest g mo src/user/user
+nest g co src/user/user
+nest g service src/user/user
+nest g interface src/user/models
+
+-->on ajoute le imports dans le userModule pour prendre en compte notre model
+imports: [
+    TypeOrmModule.forFeature([UserEntity])
+  ],

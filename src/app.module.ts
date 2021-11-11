@@ -3,6 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
+import { UserController } from './user/controller/user.controller';
+import { UserService } from './user//service/user.service';
 
 @Module({
   imports: [
@@ -17,7 +20,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: true,
       autoLoadEntities: true
-    })
+    }),
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],
