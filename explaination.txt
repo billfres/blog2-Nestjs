@@ -29,3 +29,17 @@ nest g interface src/user/models
 imports: [
     TypeOrmModule.forFeature([UserEntity])
   ],
+
+-->Ajout du module d'authentification
+nest generate module auth
+
+-->Ajout du module jwt
+npm install --save @nestjs/jwt
+
+-->on configure par la suite le auth.module
+
+nest generate service auth/auth -->puis on renomme le sous dossier auth en service
+
+-->On installe le module de cryptage
+npm i bcrypt --save
+(on va l'utiliser dans auth.service: const bcrypt = require('bcrypt'); )

@@ -6,7 +6,7 @@ export interface User {
     username?: string;
     email?: string;
     password?: string;
-    //role?: UserRole;
+    role?: UserRole;
     profileImage?: string;
     //blogEntries?: BlogEntry[];
 }
