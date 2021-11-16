@@ -43,3 +43,8 @@ nest generate service auth/auth -->puis on renomme le sous dossier auth en servi
 -->On installe le module de cryptage
 npm i bcrypt --save
 (on va l'utiliser dans auth.service: const bcrypt = require('bcrypt'); )
+
+
+-->
+npm install --save @nestjs/passport passport
+npm install --save @nestjs/jwt passport-jwt

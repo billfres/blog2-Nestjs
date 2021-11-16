@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { catchError, from, map, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from 'src/auth/service/auth.service';
@@ -21,7 +21,8 @@ export class UserService {
                 newUser.username = user.username;
                 newUser.email = user.email;
                 newUser.password = passwordHash;
-                newUser.role = UserRole.USER;
+               // newUser.role = UserRole.USER;
+                newUser.role = user.role;
 
                 return from(this.userRepository.save(newUser)).pipe(
                     map((user: User) => {
@@ -32,7 +33,7 @@ export class UserService {
                 )
             })
         )
-        return from(this.userRepository.save(user));
+       // return from(this.userRepository.save(user));
     }
 
     findAll(): Observable<User[]> {
@@ -52,9 +53,14 @@ export class UserService {
             } )
         )
     }
-    
+
     deleteOne(id: number): Observable<any> {
         return from(this.userRepository.delete(id));
+        /*(id) {
+            return from(this.userRepository.delete(id));;
+        } else {
+            return new UnauthorizedException() ;
+        }*/
     }
 
     updateOne(id: number, user: User): Observable<any> { 
@@ -62,9 +68,9 @@ export class UserService {
         delete user.password;
          //delete user.role;
 
-        return from(this.userRepository.update(id, user)).pipe(
+        return from(this.userRepository.update(id, user))/*.pipe(
             switchMap(() => this.findOne(id))
-        );
+        )*/;
     }
 
     updateRoleOfUser(id: number, user: User): Observable<any> {

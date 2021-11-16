@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert/*, OneToMany */} from "typeorm";
 import { UserRole } from "./user.interface";
 //import { BlogEntryEntity } from "src/blog/model/blog-entry.entity";
 
